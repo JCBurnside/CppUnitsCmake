@@ -38,35 +38,24 @@ namespace Units::Complex
         bool operator<(const PoweredUnit& rhs) const;
         bool operator>(const PoweredUnit& rhs) const;
 
-        friend bool operator==(const PoweredUnit&, const long double);
-        friend bool operator!=(const PoweredUnit&, const long double);
-        friend bool operator>=(const PoweredUnit&, const long double);
-        friend bool operator<=(const PoweredUnit&, const long double);
-        friend bool operator<(const PoweredUnit&, const long double);
-        friend bool operator>(const PoweredUnit&, const long double);
+        //friend bool operator==(const PoweredUnit&, long double);
+        //friend bool operator!=(const PoweredUnit&, long double);
+        //friend bool operator>=(const PoweredUnit&, long double);
+        //friend bool operator<=(const PoweredUnit&, long double);
+        //friend bool operator<(const PoweredUnit&, long double);
+        //friend bool operator>(const PoweredUnit&, long double);
 
-        friend bool operator==(const long double, const PoweredUnit&);
-        friend bool operator!=(const long double, const PoweredUnit&);
-        friend bool operator>=(const long double, const PoweredUnit&);
-        friend bool operator<=(const long double, const PoweredUnit&);
-        friend bool operator<(const long double, const PoweredUnit&);
-        friend bool operator>(const long double, const PoweredUnit&);
-
-        template<int POWER_RIGHT>
-        friend PoweredUnit<Unit, POWER - POWER_RIGHT> operator/(const PoweredUnit&, const PoweredUnit<Unit, POWER_RIGHT>&);
-
-        template<int POWER_LEFT>
-        friend PoweredUnit<Unit, POWER_LEFT - POWER> operator/(const PoweredUnit<Unit, POWER_LEFT>&, const PoweredUnit&);
+        //friend bool operator==(long double, const PoweredUnit&);
+        //friend bool operator!=(long double, const PoweredUnit&);
+        //friend bool operator>=(long double, const PoweredUnit&);
+        //friend bool operator<=(long double, const PoweredUnit&);
+        //friend bool operator<(long double, const PoweredUnit&);
+        //friend bool operator>(long double, const PoweredUnit&);
 
         friend Unit operator/(const PoweredUnit&, const PoweredUnit&);
 
         friend PoweredUnit<Unit, POWER + 1> operator*(const PoweredUnit&, const Unit&);
 
-        template<int POWER_RIGHT>
-        friend PoweredUnit<Unit, POWER + POWER_RIGHT> operator*(const PoweredUnit&, const PoweredUnit<Unit, POWER_RIGHT>&);
-
-        template<int POWER_LEFT>
-        friend PoweredUnit<Unit, POWER_LEFT + POWER> operator*(const PoweredUnit<Unit, POWER_LEFT>&, const PoweredUnit<Unit, POWER>&);
     };
 
     template<typename Unit>
@@ -105,35 +94,22 @@ namespace Units::Complex
         bool operator<(const PoweredUnit& rhs) const;
         bool operator>(const PoweredUnit& rhs) const;
 
-        friend bool operator==(const PoweredUnit&, const long double);
-        friend bool operator!=(const PoweredUnit&, const long double);
-        friend bool operator>=(const PoweredUnit&, const long double);
-        friend bool operator<=(const PoweredUnit&, const long double);
-        friend bool operator<(const PoweredUnit&, const long double);
-        friend bool operator>(const PoweredUnit&, const long double);
+        //friend bool operator==(const PoweredUnit&, long double);
+        //friend bool operator!=(const PoweredUnit&, long double);
+        //friend bool operator>=(const PoweredUnit&, long double);
+        //friend bool operator<=(const PoweredUnit&, long double);
+        //friend bool operator<(const PoweredUnit&, long double);
+        //friend bool operator>(const PoweredUnit&, long double);
 
-        friend bool operator==(const long double, const PoweredUnit&);
-        friend bool operator!=(const long double, const PoweredUnit&);
-        friend bool operator>=(const long double, const PoweredUnit&);
-        friend bool operator<=(const long double, const PoweredUnit&);
-        friend bool operator<(const long double, const PoweredUnit&);
-        friend bool operator>(const long double, const PoweredUnit&);
-
-        template<int POWER_RIGHT>
-        friend PoweredUnit<Unit, 2 - POWER_RIGHT> operator/(const PoweredUnit&, const PoweredUnit<Unit, POWER_RIGHT>&);
-
-        template<int POWER_LEFT>
-        friend PoweredUnit<Unit, POWER_LEFT - 2> operator/(const PoweredUnit<Unit, POWER_LEFT>&, const PoweredUnit&);
+        //friend bool operator==(long double, const PoweredUnit&);
+        //friend bool operator!=(long double, const PoweredUnit&);
+        //friend bool operator>=(long double, const PoweredUnit&);
+        //friend bool operator<=(long double, const PoweredUnit&);
+        //friend bool operator<(long double, const PoweredUnit&);
+        //friend bool operator>(long double, const PoweredUnit&);
 
         friend long double operator/(const PoweredUnit&, const PoweredUnit&);
 
-        friend PoweredUnit<Unit, 3> operator*(const PoweredUnit&, const Unit&);
-
-        template<int POWER_RIGHT>
-        friend PoweredUnit<Unit, 2 + POWER_RIGHT> operator*(const PoweredUnit&, const PoweredUnit<Unit, POWER_RIGHT>&);
-
-        template<int POWER_LEFT>
-        friend PoweredUnit<Unit, POWER_LEFT + 2> operator*(const PoweredUnit<Unit, POWER_LEFT>&, const PoweredUnit&);
     };
 
     template<typename Unit>
@@ -158,41 +134,44 @@ namespace Units::Complex
     };
 
     template<typename Unit, int POWER>
-    bool operator==(const PoweredUnit<Unit, POWER>& lhs, const long double rhs);
+    bool operator==(const PoweredUnit<Unit, POWER>& lhs, long double rhs)
+    {
+        return lhs.RemoveUnits() == rhs;
+    }
 
     template<typename Unit, int POWER>
-    bool operator!=(const PoweredUnit<Unit, POWER>& lhs, const long double rhs);
+    bool operator!=(const PoweredUnit<Unit, POWER>& lhs, long double rhs);
 
     template<typename Unit, int POWER>
-    bool operator>=(const PoweredUnit<Unit, POWER>& lhs, const long double rhs);
+    bool operator>=(const PoweredUnit<Unit, POWER>& lhs, long double rhs);
 
     template<typename Unit, int POWER>
-    bool operator<=(const PoweredUnit<Unit, POWER>& lhs, const long double rhs);
+    bool operator<=(const PoweredUnit<Unit, POWER>& lhs, long double rhs);
 
     template<typename Unit, int POWER>
-    bool operator<(const PoweredUnit<Unit, POWER>& lhs, const long double rhs);
+    bool operator<(const PoweredUnit<Unit, POWER>& lhs, long double rhs);
 
     template<typename Unit, int POWER>
-    bool operator>(const PoweredUnit<Unit, POWER>& lhs, const long double rhs);
+    bool operator>(const PoweredUnit<Unit, POWER>& lhs, long double rhs);
 
 
     template<typename Unit, int POWER>
-    bool operator==(const long double lhs, const PoweredUnit<Unit, POWER>& rhs);
+    bool operator==(long double lhs, const PoweredUnit<Unit, POWER>& rhs);
 
     template<typename Unit, int POWER>
-    bool operator!=(const long double lhs, const PoweredUnit<Unit, POWER>& rhs);
+    bool operator!=(long double lhs, const PoweredUnit<Unit, POWER>& rhs);
 
     template<typename Unit, int POWER>
-    bool operator>=(const long double lhs, const PoweredUnit<Unit, POWER>& rhs);
+    bool operator>=(long double lhs, const PoweredUnit<Unit, POWER>& rhs);
 
     template<typename Unit, int POWER>
-    bool operator<=(const long double lhs, const PoweredUnit<Unit, POWER>& rhs);
+    bool operator<=(long double lhs, const PoweredUnit<Unit, POWER>& rhs);
 
     template<typename Unit, int POWER>
-    bool operator<(const long double lhs, const PoweredUnit<Unit, POWER>& rhs);
+    bool operator<(long double lhs, const PoweredUnit<Unit, POWER>& rhs);
 
     template<typename Unit, int POWER>
-    bool operator>(const long double lhs, const PoweredUnit<Unit, POWER>& rhs);
+    bool operator>(long double lhs, const PoweredUnit<Unit, POWER>& rhs);
 
     template<typename Unit, int POWER_LEFT, int POWER_RIGHT>
     PoweredUnit<Unit, POWER_LEFT - POWER_RIGHT> operator/(const PoweredUnit<Unit, POWER_LEFT>& lhs, const PoweredUnit<Unit, POWER_RIGHT>& rhs);
@@ -227,5 +206,6 @@ namespace std
 
 }
 
+//#include "PoweredUnit_FreeFuncs.tpp"
 #include "PoweredUnit_Unit_2.tpp"
 #include "PoweredUnit_Unit_Power.tpp"

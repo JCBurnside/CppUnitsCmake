@@ -1,11 +1,11 @@
 #pragma once
-#include "PoweredUnit.h"
+#include "PoweredUnit.hpp"
 #include <math.h>
 
 template<typename Unit>
-Unit Units::Complex::PoweredUnit<Unit,2>::operator/(const Unit & rhs)
+Unit Units::Complex::PoweredUnit<Unit, 2>::operator/(const Unit & rhs)
 {
-    return Unit(this->datum/rhs.RemoveUnits());
+    return Unit(this->datum / rhs.RemoveUnits());
 }
 
 template<typename Unit>
@@ -34,7 +34,7 @@ long double Units::Complex::PoweredUnit<Unit, 2>::RemoveUnits() const
 template<typename Unit>
 const std::string Units::Complex::PoweredUnit<Unit, 2>::DisplayUnits()
 {
-    return Unit::DisplayUnits() + "^" + 2;
+    return Unit::DisplayUnits() + "^2";
 }
 
 template<typename Unit>

@@ -15,6 +15,8 @@ Units::Distance::Millimeter::Millimeter(long double datum)
 {
 }
 
+#pragma warning (push)
+#pragma warning (disable:4244)
 Units::Distance::Millimeter::Millimeter(unsigned long long datum)
     : datum(datum)
 {
@@ -24,7 +26,7 @@ Units::Distance::Millimeter::Millimeter(long long datum)
     : datum(datum)
 {
 }
-
+#pragma warning (pop)
 Units::Distance::Millimeter::Millimeter(const Units::Distance::Inch & inches)
     : datum(inches.datum * 0.0254L)
 {

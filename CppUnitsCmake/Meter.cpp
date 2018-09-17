@@ -9,13 +9,15 @@ Units::Distance::Meter::Meter(long double datum)
     :datum(datum)
 {}
 
+#pragma warning (push)
+#pragma warning (disable:4244)
 Units::Distance::Meter::Meter(unsigned long long datum)
     : datum(datum)
 {}
-
 Units::Distance::Meter::Meter(long long datum)
     : datum(datum)
 {}
+#pragma warning (pop)
 
 Units::Distance::Meter::Meter(const Units::Distance::Millimeter & millimeters)
     : datum(millimeters.datum / 1000.0L)
@@ -41,6 +43,11 @@ Units::Distance::Meter::Meter(const Kilometer & kilos)
 
 Units::Distance::Meter::~Meter()
 {}
+
+const std::string Units::Distance::Meter::DisplayUnits()
+{
+    return "m";
+}
 
 long double Units::Distance::Meter::RemoveUnits() const
 {

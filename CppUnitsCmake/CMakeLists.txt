@@ -10,13 +10,13 @@ add_library (CppUnitsCmake STATIC
     Millimeter.cpp Millimeter.h
     Foot.cpp Foot.h
     Inch.cpp Inch.h
-    PoweredUnit.cpp PoweredUnit.h
+    PoweredUnit.cpp PoweredUnit.hpp PoweredUnit_FreeFuncs.tpp
     UnitException.cpp UnitException.h
     UnitTraits.hpp
     )
 
 install ( TARGETS CppUnitsCmake DESTINATION lib)
-instaLL (FILES 
+install (FILES 
     CppUnitsCmake.h
     Kilometer.h
     Meter.h
@@ -24,10 +24,10 @@ instaLL (FILES
     Foot.h
     Inch.h
     Distance.h
-    PoweredUnit.h PoweredUnit_Unit_2.tpp PoweredUnit_Unit_Unit.tpp
+    PoweredUnit.hpp
     UnitsFwd.h
     UnitTraits.hpp
 
-    DESTINATION inc/Units
+    DESTINATION ../inc/Units
 )
 # TODO: Add tests and install targets if needed.

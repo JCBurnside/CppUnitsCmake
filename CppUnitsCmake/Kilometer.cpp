@@ -11,6 +11,8 @@ Units::Distance::Kilometer::Kilometer(long double datum)
     : datum(datum)
 {}
 
+#pragma warning (push)
+#pragma warning (disable:4244)
 Units::Distance::Kilometer::Kilometer(unsigned long long datum)
     : datum(datum)
 {}
@@ -18,7 +20,7 @@ Units::Distance::Kilometer::Kilometer(unsigned long long datum)
 Units::Distance::Kilometer::Kilometer(long long datum)
     : datum(datum)
 {}
-
+#pragma warning (pop)
 Units::Distance::Kilometer::Kilometer(const Inch & inches)
     : datum(inches.datum / 39370.0L)
 {}

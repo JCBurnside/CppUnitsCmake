@@ -1,5 +1,5 @@
 #pragma once
-#include "PoweredUnit.h"
+#include "PoweredUnit.hpp"
 #include <math.h>
 
 template<typename Unit, int POWER>
@@ -28,7 +28,7 @@ long double Units::Complex::PoweredUnit<Unit, POWER>::RemoveUnits() const
 template<typename Unit, int POWER>
 const std::string Units::Complex::PoweredUnit<Unit, POWER>::DisplayUnits()
 {
-    return Unit::DisplayUnits()+"^"+POWER;
+    return Unit::DisplayUnits() + "^" + std::to_string(POWER);
 }
 
 template<typename Unit, int POWER>
@@ -82,7 +82,7 @@ Units::Complex::PoweredUnit<Unit, POWER>& Units::Complex::PoweredUnit<Unit, POWE
 template<typename Unit, int POWER>
 Units::Complex::PoweredUnit<Unit, POWER - 1> Units::Complex::PoweredUnit<Unit, POWER>::operator/(const Unit & rhs)
 {
-    return PoweredUnit<Unit, POWER - 1>(this->datum/rhs.RemoveUnits());
+    return PoweredUnit<Unit, POWER - 1>(this->datum / rhs.RemoveUnits());
 }
 
 template<typename Unit, int POWER>
@@ -119,4 +119,17 @@ template<typename Unit, int POWER>
 bool Units::Complex::PoweredUnit<Unit, POWER>::operator>(const PoweredUnit & rhs) const
 {
     return this->datum > rhs.datum;
+}
+
+
+template<typename Unit, int POWER>
+Units::Complex::PoweredUnit<Unit, POWER> std::pow(const Unit& lhs)
+{
+    return Units::Complex::PoweredUnit<Unit, POWER>(std::pow(lhs.RemoveUnits(), POWER));
+}
+
+template<typename Unit, int STARTING_POWER, int RAISING_POWER>
+Units::Complex::PoweredUnit<Unit, STARTING_POWER*RAISING_POWER> std::pow(const Units::Complex::PoweredUnit<Unit, STARTING_POWER>& lhs)
+{
+    return Units::Complex::PoweredUnit<Unit, STARTING_POWER*RAISING_POWER>(std::pow(lhs.RemoveUnits(), RAISING_POWER));
 }

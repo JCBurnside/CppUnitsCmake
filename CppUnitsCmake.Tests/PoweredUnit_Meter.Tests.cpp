@@ -1,22 +1,37 @@
-#include "catch2\catch.hpp"
-#include "..\CppUnitsCmake\PoweredUnit.h"
+#include "..\CppUnitsCmake\PoweredUnit.hpp"
 #include "..\CppUnitsCmake\Meter.h"
+#include "catch2\catch.hpp"
 using namespace Units::Complex;
 using Units::Distance::Meter;
 using namespace Units::Distance::Literals;
-TEST_CASE("POWERED OPERATIONS", "[poweredUnit`meter]")
+SCENARIO("POWERED OPERATIONS", "[poweredUnit`meter]")
 {
-    WHEN("Unit is Units::Distance::Meter and POWER is 4")
+    GIVEN("A few units ( 2 m^2, 4 m^4, 1 m)")
     {
-        SECTION("Lowering powers")
+        PoweredUnit<Meter, 4> m4(4ULL);
+        PoweredUnit<Meter, 2> m2(2ULL);
+        Meter m = 1_m;
+
+        WHEN("Dividing 4 m^4 by 1 m")
         {
-            PoweredUnit<Meter, 4> m4(1ULL);
-            PoweredUnit<Meter, 2> m2(1ULL);
-            Meter m = 1_m;
-            REQUIRE(typeid(m4 / m) == typeid(PoweredUnit<Meter, 3>));
-            REQUIRE((m4 / m) == 1);
-            REQUIRE(typeid(m2 / m) == typeid(Meter));
-            REQUIRE(m2 / m == 1_m);
+            auto m3 = m4 / m;
+
+            THEN("power is reduced and it will equal 4 m^3")
+            {
+                REQUIRE(m3.Power == 3);
+                //REQUIRE(m3 == 4.0L);
+            }
         }
+
+        WHEN("Dividing 4 m^4 by 2 m^2")
+        {
+            auto result = m4 / m2;
+            THEN("power is reduced and it will equal 2 m^2")
+            {
+                REQUIRE(result.Power == 2);
+                //REQUIRE(result == 2.0L);
+            }
+        }
+
     }
 }

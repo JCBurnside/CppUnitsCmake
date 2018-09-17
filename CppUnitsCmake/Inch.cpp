@@ -16,6 +16,8 @@ Units::Distance::Inch::Inch(long double datum)
 {
 }
 
+#pragma warning (push)
+#pragma warning (disable:4244)
 Units::Distance::Inch::Inch(unsigned long long datum)
     : datum(datum)
 {
@@ -25,7 +27,7 @@ Units::Distance::Inch::Inch(long long datum)
     : datum(datum)
 {
 }
-
+#pragma warning (pop)
 Units::Distance::Inch::Inch(const Units::Distance::Foot & feet)
     : datum(0)
 {

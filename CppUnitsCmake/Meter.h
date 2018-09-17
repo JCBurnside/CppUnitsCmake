@@ -1,6 +1,7 @@
 #pragma once
 #include "UnitException.h"
 #include <iosfwd>
+#include <string>
 namespace Units::Distance {
     //TODO: converting ctor Meter
     class Inch;
@@ -28,6 +29,7 @@ namespace Units::Distance {
         explicit Meter(const Kilometer& kilos);
         ~Meter();
 
+        static const std::string DisplayUnits();
         long double RemoveUnits() const;
 
         //operators

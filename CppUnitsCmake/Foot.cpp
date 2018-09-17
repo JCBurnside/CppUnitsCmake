@@ -30,6 +30,8 @@ Units::Distance::Foot::Foot(long long datum, const Units::Distance::Inch& inches
     : datum(datum + (inches.RemoveUnits() / 12.0L))
 {}
 
+#pragma warning (push)
+#pragma warning (disable:4244)
 Units::Distance::Foot::Foot(long long datum)
     : datum(datum)
 {}
@@ -37,7 +39,7 @@ Units::Distance::Foot::Foot(long long datum)
 Units::Distance::Foot::Foot(unsigned long long datum)
     : datum(datum)
 {}
-
+#pragma warning (pop)
 Units::Distance::Foot::~Foot()
 {}
 
