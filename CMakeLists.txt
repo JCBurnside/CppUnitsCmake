@@ -2,8 +2,9 @@
 # and include sub-projects here.
 #
 cmake_minimum_required (VERSION 3.8)
-
-project ("CppUnitsCmake")
-
+project (CppUnitsCmake)
+set(CMAKE_CXX_STANDARD 17)
+include_directories(inc)
 # Include sub-projects.
 add_subdirectory ("CppUnitsCmake")
+add_subdirectory ("CppUnitsCmake.Tests")
